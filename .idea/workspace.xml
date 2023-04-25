@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0c9a56d-7a54-466c-b35e-fdf1457c65d7" name="Changes" comment="Resolver and service layer">
-      <change afterPath="$PROJECT_DIR$/src/app/plan/day/day.resolver.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/plan/day/day.resolver.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/plan/day/day.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/plan/day/day.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/plan/plan.resolver.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/plan/plan.resolver.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/plan/plan.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/plan/plan.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/plan/plan.types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/plan/plan-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/plan/plan-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/auth.guard.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/auth/auth.guard.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/auth/auth.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/auth.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/auth/auth.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/auth/auth.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,24 +30,28 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "true",
-    "last_opened_file_path": "/home/creazy/IdeaProjects/uschedule-ui/src/app/plan",
+    "last_opened_file_path": "/home/creazy/IdeaProjects/uschedule-ui/src/app/core/user",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/home/creazy/.local/share/JetBrains/Toolbox/apps/IDEA-U/ch-0/222.4345.14/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external",
+    "ts.external.directory.path": "/home/creazy/IdeaProjects/uschedule-ui/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/core/user" />
       <recent name="$PROJECT_DIR$/src/app/plan" />
       <recent name="$PROJECT_DIR$/src/app/auth" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/app/plan/day" />
+      <recent name="$PROJECT_DIR$/src/app/core/user" />
+      <recent name="$PROJECT_DIR$/src/app/core/auth" />
       <recent name="$PROJECT_DIR$/src/app/core" />
+      <recent name="$PROJECT_DIR$/src/app/auth" />
+      <recent name="$PROJECT_DIR$/src/app/plan/day" />
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
@@ -140,5 +139,17 @@
     <MESSAGE value="Day guard. Plan routing" />
     <MESSAGE value="Resolver and service layer" />
     <option name="LAST_COMMIT_MESSAGE" value="Resolver and service layer" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/core/auth/anonymous.guard.ts</url>
+          <line>19</line>
+          <properties lambdaOrdinal="0" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

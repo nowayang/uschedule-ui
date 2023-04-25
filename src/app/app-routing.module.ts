@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AuthGuard} from './core/auth.guard';
+import {AuthGuard} from "./core/auth/auth.guard";
+import {AnonymousGuard} from "./core/auth/anonymous.guard";
 
 const routes: Routes = [
 
@@ -12,6 +13,7 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth-routing.module').then(m => m.AuthRoutingModule),
+    canActivate: [AnonymousGuard]
   },
   { path: '**',  redirectTo: 'plan' },
 ];
