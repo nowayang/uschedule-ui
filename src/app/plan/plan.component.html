@@ -6,7 +6,7 @@
     </button>
     <span>Plan zajęć Politechniki Krakowskiej</span>
     <span class="spacer"></span>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <button mat-icon-button disabled>
       <mat-icon>share</mat-icon>
     </button>
     <button mat-icon-button (click)="onSignOutClick()">
@@ -17,7 +17,14 @@
   <mat-drawer-container autosize [style.height]="'calc(100vh - 64px)'">
     <mat-drawer #drawer mode="side"
                 [opened]="true"
-                [style.min-width]="'20vw'">
+                class="nav-drawer">
+
+      <span class="mat-h1">Ustawienia</span>
+      <mat-divider></mat-divider>
+      <app-plan-settings></app-plan-settings>
+
+      <span class="mat-h1">Zjazdy studenckie</span>
+      <mat-divider></mat-divider>
       <app-day-nav></app-day-nav>
     </mat-drawer>
 

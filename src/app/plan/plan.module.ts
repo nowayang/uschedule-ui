@@ -7,6 +7,7 @@ import {DaySelectedGuard} from "./day/day.guard";
 import {DayNavComponent} from './day-nav/day-nav.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {DayResolver} from "./day/day.resolver";
+import { PlanSettingsComponent } from './plan-settings/plan-settings.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,7 @@ const routes: Routes = [
     PlanComponent,
     DayComponent,
     DayNavComponent,
+    PlanSettingsComponent,
   ],
   exports: [],
   imports: [

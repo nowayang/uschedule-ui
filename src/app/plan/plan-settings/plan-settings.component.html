@@ -1,0 +1,40 @@
+<form *ngIf="formGroup" [formGroup]="formGroup">
+  <mat-list>
+
+    <mat-list-item style="height:auto">
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="degree">
+          <mat-option [value]="1">1</mat-option>
+          <mat-option [value]="2">2</mat-option>
+        </mat-select>
+        <mat-label>Stopień</mat-label>
+      </mat-form-field>
+    </mat-list-item>
+
+    <mat-list-item style="height:auto">
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="year">
+          <mat-option [value]="1">1</mat-option>
+          <mat-option [value]="2">2</mat-option>
+          <mat-option [value]="3">3</mat-option>
+          <mat-option [value]="4">4</mat-option>
+        </mat-select>
+        <mat-label>Rok</mat-label>
+      </mat-form-field>
+    </mat-list-item>
+
+    <mat-list-item style="height:auto">
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="group">
+          <mat-option [value]="1">1</mat-option>
+          <mat-option [value]="2">2</mat-option>
+          <mat-option [value]="3">3</mat-option>
+          <mat-option [value]="4">4</mat-option>
+          <mat-option [value]="5">5</mat-option>
+          <mat-option [value]="6">6</mat-option>
+        </mat-select>
+        <mat-label>Grupa laboratoryjna</mat-label>
+      </mat-form-field>
+    </mat-list-item>
+  </mat-list>
+</form>

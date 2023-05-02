@@ -21,3 +21,9 @@ export type Lesson = {
   start: Date,
   end: Date,
 }
+
+export type Settings = {
+  degree: number,
+  year: number,
+  group: number
+}
