@@ -6,6 +6,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatTableModule} from "@angular/material/table";
 import {MatRippleModule} from "@angular/material/core";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import {MatRippleModule} from "@angular/material/core";
     MatCardModule,
     MatTableModule,
     MatRippleModule,
+    MatDividerModule,
+    MatGridListModule
   ],
   imports: [
     CommonModule,
