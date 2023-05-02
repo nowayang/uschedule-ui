@@ -7,12 +7,12 @@ const routes: Routes = [
 
   {
     path: 'plan',
-    loadChildren: () => import('./plan/plan-routing.module').then(m => m.PlanRoutingModule),
+    loadChildren: () => import('./plan/plan.module').then(m => m.PlanModule),
     canActivate: [AuthGuard]
   },
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth-routing.module').then(m => m.AuthRoutingModule),
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
     canActivate: [AnonymousGuard]
   },
   { path: '**',  redirectTo: 'plan' },
