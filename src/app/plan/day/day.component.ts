@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ReplaySubject, Subject, takeUntil} from "rxjs";
+import {ReplaySubject, Subject, switchMap, take, takeUntil} from "rxjs";
 import {Day} from "../plan.types";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {LogService} from "../../core/log.service";
+import {DayService} from "./day.service";
 
 @Component({
   selector: 'app-day',
@@ -15,6 +16,8 @@ export class DayComponent implements OnInit {
   private unsubscribeAll: Subject<void> = new Subject<void>();
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
+              private dayService: DayService,
               private logService: LogService) {}
 
   ngOnInit(): void {
@@ -28,11 +31,17 @@ export class DayComponent implements OnInit {
   }
 
   onClickNavigateNext(): void {
-    //todo
+    this.day
+      .pipe(switchMap(d => this.dayService.getNextId(d.id)))
+      .pipe(take(1))
+      .subscribe(nextId => this.router.navigateByUrl(`plan/day/${nextId}`))
   }
 
   onClickNavigateBefore(): void {
-    //todo
+    this.day
+      .pipe(switchMap(d => this.dayService.getPrevId(d.id)))
+      .pipe(take(1))
+      .subscribe(prevId => this.router.navigateByUrl(`plan/day/${prevId}`))
   }
 
   ngOnDestroy(): void {

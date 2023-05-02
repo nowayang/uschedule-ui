@@ -23,7 +23,7 @@ const routes: Routes = [
         },
       },
       {
-        path: 'day',
+        path: 'day/:id',
         component: DayComponent,
         canActivateChild: [DaySelectedGuard],
         resolve  : {

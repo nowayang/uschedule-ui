@@ -1,17 +1,18 @@
 export type Plan = {
-  id: Number
+  id: number
   days: DaySelection[]
 }
 
 export type Day = {
+  id: number,
   date: Date,
   lessons: Lesson[]
 }
 
 export type DaySelection = {
-  id: Number,
+  id: number,
   date: Date,
-  lessonsLength: Number
+  lessonsLength: number
 }
 
 export type Lesson = {

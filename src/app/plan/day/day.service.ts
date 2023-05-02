@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable, of, ReplaySubject, tap} from 'rxjs';
+import {filter, map, Observable, of, ReplaySubject, take, tap} from 'rxjs';
 import {Day, DaySelection} from '../plan.types';
 
 const ELEMENT_DATA = [
@@ -33,6 +33,7 @@ export class DayService {
     // return this.httpClient.get<Day>(`/days/${id}`); todo
 
     return of({
+      id: 1,
       date: new Date(),
       lessons: [
         {
@@ -49,11 +50,43 @@ export class DayService {
           name: 'Programowanie w języku Java\n wykład mgr inż. Łukasz Gaża ZDALNIE',
           color: '#DDBDF1'
         },
+        {
+          name: 'Architektura systemów komputerowych wykład',
+          color: 'lightblue'
+        },
+        {
+          name: 'Podstawy sieci komputerowych wykład\n' +
+            'dr inż. J. Białas\n' +
+            'ZDALNIE',
+          color: 'lightpink'
+        },
       ]
     });
   }
 
   loadDayList(): Observable<DaySelection[]> {
     return of(ELEMENT_DATA).pipe(tap(list => this.dayList.next(list)))
+  }
+
+  getNextId(currId: number): Observable<number> {
+    return this.dayList.pipe(
+        map(dayList => {
+          const listIndex = dayList.findIndex(day => day.id === currId);
+          return dayList[listIndex + 1];
+        }),
+        filter(nextDay => !!nextDay),
+        map(nextDay => nextDay.id)
+      );
+  }
+
+  getPrevId(currId: number): Observable<number> {
+    return this.dayList.pipe(
+      map(dayList => {
+        const listIndex = dayList.findIndex(day => day.id === currId);
+        return dayList[listIndex - 1];
+      }),
+      filter(prevDay => !!prevDay),
+      map(prevDay => prevDay.id)
+    );
   }
 }
