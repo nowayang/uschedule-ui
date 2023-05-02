@@ -1,25 +1,11 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {filter, map, Observable, of, ReplaySubject, take, tap} from 'rxjs';
-import {Day, DaySelection} from '../plan.types';
+import {catchError, filter, map, Observable, of, ReplaySubject, take, tap, throwError} from 'rxjs';
+import {Day, DaySelection, Lesson} from '../plan.types';
+import {Page} from "../../shared/shared.types";
+import {PlanService} from "../plan.service";
+import {PlanSettingsService} from "../plan-settings/plan-settings.service";
 
-const ELEMENT_DATA = [
-  {
-    id: 1,
-    date: new Date(),
-    lessonsLength: 2
-  },
-  {
-    id: 2,
-    date: new Date(),
-    lessonsLength: 3
-  },
-  {
-    id: 3,
-    date: new Date(),
-    lessonsLength: 3
-  },
-];
 
 @Injectable({
   providedIn: 'root'
@@ -27,55 +13,34 @@ const ELEMENT_DATA = [
 export class DayService {
   private dayList: ReplaySubject<DaySelection[]> = new ReplaySubject<DaySelection[]>(1);
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+              private planService: PlanService,
+              private planSettingsService: PlanSettingsService) { }
 
   getDay(id: Number): Observable<Day> {
-    // return this.httpClient.get<Day>(`/days/${id}`); todo
-
-    return of({
-      id: 1,
-      date: new Date(),
-      lessons: [
-        {
-          name: 'Architektura systemów komputerowych wykład',
-          color: 'lightblue',
-          start: new Date(),
-          end: new Date(),
-        },
-        {
-          name: 'Podstawy sieci komputerowych wykład\n' +
-            'dr inż. J. Białas\n' +
-            'ZDALNIE',
-          color: 'lightpink',
-          start: new Date(),
-          end: new Date(),
-        },
-        {
-          name: 'Programowanie w języku Java\n wykład mgr inż. Łukasz Gaża ZDALNIE',
-          color: '#DDBDF1',
-          start: new Date(),
-          end: new Date(),
-        },
-        {
-          name: 'Architektura systemów komputerowych wykład',
-          color: 'lightblue',
-          start: new Date(),
-          end: new Date(),
-        },
-        {
-          name: 'Podstawy sieci komputerowych wykład\n' +
-            'dr inż. J. Białas\n' +
-            'ZDALNIE',
-          color: 'lightpink',
-          start: new Date(),
-          end: new Date(),
-        },
-      ]
-    });
+    return this.httpClient.get<Day>(`/api/days/${id}`).pipe(
+      catchError(error => throwError(error)),
+      map(res => res as Day),
+    );
   }
 
   loadDayList(): Observable<DaySelection[]> {
-    return of(ELEMENT_DATA).pipe(tap(list => this.dayList.next(list)))
+    return this.httpClient
+      .post(
+        '/api/days',
+        {
+          scheduleId: this.planService.plan.value?.id,
+          degree: this.planSettingsService.settings.value?.degree,
+          level: this.planSettingsService.settings.value?.year,
+          group: this.planSettingsService.settings.value?.group,
+        },
+        {params: {size: 1000, sort: 'date'}})
+      .pipe(
+        catchError(error => throwError(error)),
+        map(res => res as Page<DaySelection>),
+        map(res => res.content as DaySelection[]),
+        tap(dayList => this.dayList.next(dayList))
+      );
   }
 
   getNextId(currId: number): Observable<number> {

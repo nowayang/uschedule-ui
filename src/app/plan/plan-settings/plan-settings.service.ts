@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, of, ReplaySubject} from "rxjs";
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable, of} from "rxjs";
 import {Settings} from "../plan.types";
 
 @Injectable({
@@ -7,7 +7,8 @@ import {Settings} from "../plan.types";
 })
 export class PlanSettingsService {
   private static DEFAULT_SETTINGS: Settings = {degree: 1, year: 1, group: 1};
-  private settings: ReplaySubject<Settings> = new ReplaySubject<Settings>(1);
+
+  settings: BehaviorSubject<Settings> = new BehaviorSubject<Settings>(PlanSettingsService.DEFAULT_SETTINGS);
 
   constructor() { }
 

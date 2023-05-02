@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DayService} from "../day/day.service";
 import {DaySelection} from "../plan.types";
-import {Subject, takeUntil} from "rxjs";
+import {Subject, takeUntil, tap} from "rxjs";
 
 @Component({
   selector: 'app-day-nav',

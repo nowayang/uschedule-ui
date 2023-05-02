@@ -1,6 +1,7 @@
 export type Plan = {
-  id: number
-  days: DaySelection[]
+  id: number,
+  fileName: string,
+  fileModifiedAt: Date,
 }
 
 export type Day = {

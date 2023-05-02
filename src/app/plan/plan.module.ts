@@ -8,11 +8,15 @@ import {DayNavComponent} from './day-nav/day-nav.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {DayResolver} from "./day/day.resolver";
 import { PlanSettingsComponent } from './plan-settings/plan-settings.component';
+import {PlanResolver} from "./plan.resolver";
 
 const routes: Routes = [
   {
     path: '',
     component: PlanComponent,
+    resolve  : {
+      plan    : PlanResolver,
+    },
     children: [
       {
         path: '',

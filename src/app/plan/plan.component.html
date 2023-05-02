@@ -5,6 +5,7 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span>Plan zajęć Politechniki Krakowskiej</span>
+    <span *ngIf="!!plan">, wersja z dnia {{ plan?.fileModifiedAt | date }}</span>
     <span class="spacer"></span>
     <button mat-icon-button disabled>
       <mat-icon>share</mat-icon>
