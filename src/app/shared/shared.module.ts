@@ -8,10 +8,12 @@ import {MatTableModule} from "@angular/material/table";
 import {MatRippleModule} from "@angular/material/core";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   exports: [
     CommonModule,
     MatToolbarModule,
@@ -21,7 +23,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
     MatTableModule,
     MatRippleModule,
     MatDividerModule,
-    MatGridListModule
+    MatGridListModule,
+    MatPaginatorModule,
   ],
   imports: [
     CommonModule,

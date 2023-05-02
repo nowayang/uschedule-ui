@@ -1,14 +1,41 @@
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <ng-container matColumnDef="date">
-    <mat-header-cell mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
-    <mat-cell mat-cell *matCellDef="let element"> {{element.date | date}} </mat-cell>
-  </ng-container>
+<ng-container>
+  <mat-card class="day-list-card"
+            appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>
+        Zjazdy
+      </mat-card-title>
 
-  <ng-container matColumnDef="lessonsLength">
-    <mat-header-cell mat-header-cell *matHeaderCellDef> Ilość zajęć </mat-header-cell>
-    <mat-cell mat-cell *matCellDef="let element"> {{element.lessonsLength}} </mat-cell>
-  </ng-container>
+      <span class="spacer"></span>
+      <mat-paginator [length]="20"
+                     hidePageSize
+                     [pageSize]="30"></mat-paginator>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-table [dataSource]="dataSource"
+                 class="mat-elevation-z0">
+        <ng-container matColumnDef="date">
+          <mat-header-cell mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let element"> {{element.date | date}} </mat-cell>
+        </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+        <ng-container matColumnDef="lessonsLength">
+          <mat-header-cell mat-header-cell *matHeaderCellDef> Ilość zajęć </mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let element"> {{element.lessonsLength}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </mat-card-content>
+  </mat-card>
+
+
+
+
+</ng-container>
+
+
+
+
