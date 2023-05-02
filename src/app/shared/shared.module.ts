@@ -9,6 +9,7 @@ import {MatRippleModule} from "@angular/material/core";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatListModule} from "@angular/material/list";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatDividerModule,
     MatGridListModule,
     MatPaginatorModule,
+    MatListModule
   ],
   imports: [
     CommonModule,

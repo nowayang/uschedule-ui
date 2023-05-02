@@ -1,5 +1,7 @@
-<mat-toolbar color="primary" class="ma-0 pa-0">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+<ng-container>
+  <mat-toolbar color="primary" class="ma-0 pa-0">
+    <button mat-icon-button
+            (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <span>Plan zajęć Politechniki Krakowskiej</span>
@@ -10,6 +12,20 @@
     <button mat-icon-button (click)="onSignOutClick()">
       <mat-icon>logout</mat-icon>
     </button>
-</mat-toolbar>
+  </mat-toolbar>
 
-<router-outlet></router-outlet>
+  <mat-drawer-container autosize [style.height]="'calc(100vh - 64px)'">
+    <mat-drawer #drawer mode="side"
+                [opened]="true"
+                [style.min-width]="'20vw'">
+      <app-day-nav></app-day-nav>
+    </mat-drawer>
+
+    <router-outlet></router-outlet>
+  </mat-drawer-container>
+</ng-container>
+
+
+
+
+

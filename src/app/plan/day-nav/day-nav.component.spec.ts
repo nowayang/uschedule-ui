@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DayListComponent } from './day-list.component';
+import { DayNavComponent } from './day-nav.component';
 
-describe('DayListComponent', () => {
-  let component: DayListComponent;
-  let fixture: ComponentFixture<DayListComponent>;
+describe('DayNavComponent', () => {
+  let component: DayNavComponent;
+  let fixture: ComponentFixture<DayNavComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DayListComponent ]
+      declarations: [ DayNavComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DayListComponent);
+    fixture = TestBed.createComponent(DayNavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
