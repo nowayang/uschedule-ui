@@ -15,13 +15,21 @@
     </mat-card-header>
     <mat-card-content>
       <mat-divider></mat-divider>
-      <mat-grid-list class="lesson-list" cols="1" rowHeight="10vh">
+      <mat-grid-list class="lesson-list"
+                     gutterSize="20px"
+                     cols="1"
+                     rowHeight="10vh">
+
         <mat-grid-tile *ngFor="let lesson of (day | async)?.lessons"
                        [style.background]="lesson.color">
-          <app-lesson [lesson]="lesson"></app-lesson>
+          <mat-grid-tile-header>
+            {{ lesson.start | date : 'shortTime' }} - {{ lesson.end | date : 'shortTime' }}
+          </mat-grid-tile-header>
+          <mat-grid-tile-footer>
+            {{ lesson.name }}
+          </mat-grid-tile-footer>
         </mat-grid-tile>
       </mat-grid-list>
-
     </mat-card-content>
   </mat-card>
 </ng-container>

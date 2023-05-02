@@ -38,27 +38,37 @@ export class DayService {
       lessons: [
         {
           name: 'Architektura systemów komputerowych wykład',
-          color: 'lightblue'
+          color: 'lightblue',
+          start: new Date(),
+          end: new Date(),
         },
         {
           name: 'Podstawy sieci komputerowych wykład\n' +
             'dr inż. J. Białas\n' +
             'ZDALNIE',
-          color: 'lightpink'
+          color: 'lightpink',
+          start: new Date(),
+          end: new Date(),
         },
         {
           name: 'Programowanie w języku Java\n wykład mgr inż. Łukasz Gaża ZDALNIE',
-          color: '#DDBDF1'
+          color: '#DDBDF1',
+          start: new Date(),
+          end: new Date(),
         },
         {
           name: 'Architektura systemów komputerowych wykład',
-          color: 'lightblue'
+          color: 'lightblue',
+          start: new Date(),
+          end: new Date(),
         },
         {
           name: 'Podstawy sieci komputerowych wykład\n' +
             'dr inż. J. Białas\n' +
             'ZDALNIE',
-          color: 'lightpink'
+          color: 'lightpink',
+          start: new Date(),
+          end: new Date(),
         },
       ]
     });

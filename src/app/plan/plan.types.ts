@@ -17,5 +17,7 @@ export type DaySelection = {
 
 export type Lesson = {
   name: string,
-  color: string
+  color: string,
+  start: Date,
+  end: Date,
 }
