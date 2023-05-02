@@ -4,6 +4,14 @@
     <mat-card-header>
       <mat-card-title>Dzień {{ (day | async)?.date | date }}</mat-card-title>
       <mat-card-subtitle *ngIf="(day | async)?.lessons?.length === 0">W tym dniu nie ma zajęć</mat-card-subtitle>
+
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="onClickNavigateBefore()">
+        <mat-icon>navigate_before</mat-icon>
+      </button>
+      <button mat-icon-button (click)="onClickNavigateNext()">
+        <mat-icon>navigate_next</mat-icon>
+      </button>
     </mat-card-header>
     <mat-card-content>
       <mat-divider></mat-divider>

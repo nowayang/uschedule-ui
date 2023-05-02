@@ -27,6 +27,14 @@ export class DayComponent implements OnInit {
     });
   }
 
+  onClickNavigateNext(): void {
+    //todo
+  }
+
+  onClickNavigateBefore(): void {
+    //todo
+  }
+
   ngOnDestroy(): void {
     this.unsubscribeAll.next();
     this.unsubscribeAll.complete();
