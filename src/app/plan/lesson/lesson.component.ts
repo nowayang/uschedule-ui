@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Lesson} from "../plan.types";
 
 @Component({
   selector: 'app-lesson',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./lesson.component.sass']
 })
 export class LessonComponent {
-
+  @Input('lesson') lesson: Lesson | undefined;
 }

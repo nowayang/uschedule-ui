@@ -4,10 +4,10 @@ import {PlanComponent} from './plan.component';
 import {LessonComponent} from './lesson/lesson.component';
 import {SharedModule} from "../shared/shared.module";
 import {RouterModule, Routes} from "@angular/router";
-import {DayGuard} from "./day/day.guard";
-import {DayResolver} from "./day/day.resolver";
+import {DaySelectedGuard} from "./day/day.guard";
 import {DayNavComponent} from './day-nav/day-nav.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {DayResolver} from "./day/day.resolver";
 
 const routes: Routes = [
 
@@ -18,7 +18,6 @@ const routes: Routes = [
       {
         path: '',
         component: DayComponent,
-        canActivateChild: [DayGuard],
         resolve  : {
           day    : DayResolver,
         },
@@ -26,7 +25,7 @@ const routes: Routes = [
       {
         path: 'day',
         component: DayComponent,
-        canActivateChild: [DayGuard],
+        canActivateChild: [DaySelectedGuard],
         resolve  : {
           day    : DayResolver,
         },

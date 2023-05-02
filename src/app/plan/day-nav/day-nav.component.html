@@ -3,7 +3,7 @@
 
   <a *ngFor="let day of dayList"
      mat-list-item
-     [routerLink]="['/detail']">
+     [routerLink]="['day', day.id]">
 
     <span matLine>{{ day.date | date }}</span>
   </a>

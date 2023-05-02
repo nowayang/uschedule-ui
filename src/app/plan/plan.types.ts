@@ -15,5 +15,6 @@ export type DaySelection = {
 }
 
 export type Lesson = {
-  name: string
+  name: string,
+  color: string
 }

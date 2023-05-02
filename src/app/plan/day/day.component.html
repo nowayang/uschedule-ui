@@ -1,1 +1,28 @@
-<p>day works!</p>
+<ng-container *ngIf="day | async else dayNotSelected">
+  <mat-card appearance="outlined"
+            class="day-card">
+    <mat-card-header>
+      <mat-card-title>Dzień {{ (day | async)?.date | date }}</mat-card-title>
+      <mat-card-subtitle *ngIf="(day | async)?.lessons?.length === 0">W tym dniu nie ma zajęć</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-grid-list class="lesson-list" cols="1" rowHeight="10vh">
+        <mat-grid-tile *ngFor="let lesson of (day | async)?.lessons"
+                       [style.background]="lesson.color">
+          <app-lesson [lesson]="lesson"></app-lesson>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<ng-template #dayNotSelected>
+  <mat-grid-list cols="1" rowHeight="3:1">
+    <mat-grid-tile>
+      <h2 matSubheader>Nie wybrano dnia</h2>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>
+
