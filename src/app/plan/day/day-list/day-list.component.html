@@ -1,0 +1,14 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="date">
+    <mat-header-cell mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element"> {{element.date | date}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="lessonsLength">
+    <mat-header-cell mat-header-cell *matHeaderCellDef> Ilość zajęć </mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element"> {{element.lessonsLength}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

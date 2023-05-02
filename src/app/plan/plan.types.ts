@@ -11,6 +11,7 @@ export type Day = {
 export type DaySelection = {
   id: Number,
   date: Date,
+  lessonsLength: Number
 }
 
 export type Lesson = {
