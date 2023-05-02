@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {User} from "../user/user.types";
 import {BehaviorSubject, Observable, ReplaySubject} from "rxjs";
 import {ErrorService} from "../error/error.service";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class AuthService {
   private loggedUser: ReplaySubject<User> = new ReplaySubject<User>(1);
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(private errorService: ErrorService) { }
+  constructor(private errorService: ErrorService,
+              private router: Router) { }
 
   get loggedUser$(): Observable<User> {
     return this.loggedUser.asObservable();
