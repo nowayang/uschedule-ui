@@ -18,21 +18,15 @@ export class DayNavComponent implements OnInit, OnDestroy {
               private logService: LogService) {}
 
   ngOnInit(): void {
-    this.subscribeDayListChange();
+    this.dayService.loadDayList()
+      .pipe(takeUntil(this.unsubscribeAll))
+      .subscribe(dayList => {
+        this.dayList = dayList;
+      });
   }
 
   ngOnDestroy(): void {
     this.unsubscribeAll.next();
     this.unsubscribeAll.complete();
-  }
-
-  subscribeDayListChange(): void {
-    this.logService.log("subscribeDayListChange()");
-
-    this.dayService.dayList.asObservable()
-      .pipe(takeUntil(this.unsubscribeAll))
-      .subscribe(dayList => {
-        this.dayList = dayList;
-      });
   }
 }

@@ -17,24 +17,15 @@ export class DayService {
   constructor(private httpClient: HttpClient,
               private planService: PlanService,
               private planSettingsService: PlanSettingsService,
-              private logService: LogService) {
-    this.subscribeToPlanSettings();
-  }
+              private logService: LogService) {}
 
   getDay(id: Number): Observable<Day> {
-    return this.httpClient.get<Day>(`/api/days/${id}/groups/${this.planSettingsService.settings.value?.group}`).pipe(
+    const settings = this.planSettingsService.settings.value;
+    const url = `/api/days/${id}/degree/${settings.degree}/level/${settings.year}/group/${settings.group}`
+    return this.httpClient.get<Day>(url).pipe(
       catchError(error => throwError(error)),
       map(res => res as Day),
     );
-  }
-
-  subscribeToPlanSettings(): void {
-    this.logService.log("subscribeToPlanSettings()");
-    this.planSettingsService.settings.asObservable()
-      .subscribe(newSettings => {
-        this.logService.log(newSettings);
-        this.loadDayList().pipe(take(1)).subscribe();
-      });
   }
 
   loadDayList(): Observable<DaySelection[]> {

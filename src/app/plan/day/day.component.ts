@@ -4,6 +4,7 @@ import {Day} from "../plan.types";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LogService} from "../../core/log.service";
 import {DayService} from "./day.service";
+import {PlanSettingsService} from "../plan-settings/plan-settings.service";
 
 @Component({
   selector: 'app-day',
@@ -17,6 +18,7 @@ export class DayComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private planSettingsService: PlanSettingsService,
               private dayService: DayService,
               private logService: LogService) {}
 
@@ -29,30 +31,35 @@ export class DayComponent implements OnInit {
         this.logService.log(resolvedData);
     });
 
-    this.subscribeToDayListChange();
+    this.subscribeToPlanSettingsChange();
   }
 
-  subscribeToDayListChange(): void {
-    this.dayService.dayList
+  subscribeToPlanSettingsChange(): void {
+    this.planSettingsService.settings
       .pipe(
         skip(1),
-        takeUntil(this.unsubscribeAll))
-      .subscribe(resolvedData => {
-        this.router.navigateByUrl("/plan").then()
+        takeUntil(this.unsubscribeAll),
+        switchMap(settings => this.day.pipe(take(1))),
+        switchMap(day => this.dayService.getDay(day.id)))
+      .subscribe(day => {
+        this.day.next(day);
+        this.logService.log(day);
       });
   }
 
   onClickNavigateNext(): void {
     this.day
-      .pipe(switchMap(d => this.dayService.getNextId(d.id)))
-      .pipe(take(1))
+      .pipe(
+        take(1),
+        switchMap(d => this.dayService.getNextId(d.id)))
       .subscribe(nextId => this.router.navigateByUrl(`plan/day/${nextId}`))
   }
 
   onClickNavigateBefore(): void {
     this.day
-      .pipe(switchMap(d => this.dayService.getPrevId(d.id)))
-      .pipe(take(1))
+      .pipe(
+        take(1),
+        switchMap(d => this.dayService.getPrevId(d.id)))
       .subscribe(prevId => this.router.navigateByUrl(`plan/day/${prevId}`))
   }
 
