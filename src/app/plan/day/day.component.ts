@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ReplaySubject, Subject, switchMap, take, takeUntil} from "rxjs";
+import {ReplaySubject, skip, Subject, switchMap, take, takeUntil} from "rxjs";
 import {Day} from "../plan.types";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LogService} from "../../core/log.service";
@@ -28,6 +28,18 @@ export class DayComponent implements OnInit {
         this.day.next(resolvedData['day']);
         this.logService.log(resolvedData);
     });
+
+    this.subscribeToDayListChange();
+  }
+
+  subscribeToDayListChange(): void {
+    this.dayService.dayList
+      .pipe(
+        skip(1),
+        takeUntil(this.unsubscribeAll))
+      .subscribe(resolvedData => {
+        this.router.navigateByUrl("/plan").then()
+      });
   }
 
   onClickNavigateNext(): void {
