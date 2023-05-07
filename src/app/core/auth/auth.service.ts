@@ -12,7 +12,11 @@ export class AuthService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private errorService: ErrorService,
-              private router: Router) { }
+              private router: Router) {
+
+    const auth = this.authorizationHeader;
+    this.loggedIn.next(!!auth && auth.length > 0)
+  }
 
   get loggedUser$(): Observable<User> {
     return this.loggedUser.asObservable();
@@ -22,12 +26,12 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 
-  set accessToken(token: string) {
-    localStorage.setItem('access_token', token);
+  set authorizationHeader(token: string) {
+    localStorage.setItem('auth', token);
   }
 
-  get accessToken(): string {
-    return localStorage.getItem('access_token') ?? '';
+  get authorizationHeader(): string {
+    return localStorage.getItem('auth') ?? '';
   }
 
   signIn(): Observable<User> {
@@ -49,13 +53,9 @@ export class AuthService {
   }
 
   signOut(): Observable<any> {
-
-    if (!this.loggedIn.getValue()) {
-      this.errorService.showError("User is not logged in.");
-    }
-
+    this.authorizationHeader = '';
     this.loggedIn.next(false);
 
-    return this.loggedUser$;
+    return this.loggedIn$;
   }
 }

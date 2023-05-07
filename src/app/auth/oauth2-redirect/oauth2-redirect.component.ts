@@ -21,15 +21,15 @@ export class Oauth2RedirectComponent implements OnInit {
   ngOnInit(): void {
     const paramMap = this.route.snapshot.queryParamMap;
 
-    const token: any = paramMap.get('token');
+    const authorization: any = paramMap.get('authorization');
     const redirectUrl: any = paramMap.get('redirect_url');
 
     this.logService.log("Oauth2RedirectComponent ngOnInit()")
-    this.logService.log(token);
+    this.logService.log(authorization);
     this.logService.log(redirectUrl);
 
-    if (token) {
-      this.authService.accessToken = token;
+    if (authorization) {
+      this.authService.authorizationHeader = authorization;
       this.authService.signIn().pipe(take(1)).subscribe((user: User) => {
 
         if (redirectUrl) {
