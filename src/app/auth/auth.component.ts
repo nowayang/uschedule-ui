@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from "../core/auth/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-auth',
@@ -15,18 +16,7 @@ export class AuthComponent {
   }
 
   onSignInClick(): void {
-
-    //todo implement
-    this.authService.signIn(
-      {
-        email: '',
-        password: ''
-      }
-    );
-
-    let redirectURL = this.activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/signed-in-redirect';
-
-    // Navigate to the redirect url
-    this.router.navigateByUrl(redirectURL);
+    const env = environment;
+    window.location.href = `${env.apiUrl}/oauth2/authorization/google?redirect_uri=${env.appUrl}/auth/oauth2-redirect`;
   }
 }

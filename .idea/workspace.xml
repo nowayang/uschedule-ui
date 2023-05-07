@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0c9a56d-7a54-466c-b35e-fdf1457c65d7" name="Changes" comment="API proxy">
+    <list default="true" id="c0c9a56d-7a54-466c-b35e-fdf1457c65d7" name="Changes" comment="Refactoring level and degree">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/plan/day/day.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/plan/day/day.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/auth.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/auth.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/auth.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/auth.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +83,10 @@
       <workItem from="1682579671303" duration="4379000" />
       <workItem from="1683011285117" duration="762000" />
       <workItem from="1683021260333" duration="6175000" />
-      <workItem from="1683096537437" duration="309000" />
+      <workItem from="1683096537437" duration="7476000" />
+      <workItem from="1683223975004" duration="1685000" />
+      <workItem from="1683225706665" duration="832000" />
+      <workItem from="1683458010941" duration="786000" />
     </task>
     <task id="LOCAL-00001" summary="App initial structure">
       <created>1682408117859</created>
@@ -160,7 +165,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683038723619</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Event handlers">
+      <created>1683101353779</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1683101353779</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Refactoring level and degree">
+      <created>1683105986384</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1683105986384</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,7 +207,9 @@
     <MESSAGE value="Days Navigation" />
     <MESSAGE value="Plan settings" />
     <MESSAGE value="API proxy" />
-    <option name="LAST_COMMIT_MESSAGE" value="API proxy" />
+    <MESSAGE value="Event handlers" />
+    <MESSAGE value="Refactoring level and degree" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring level and degree" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
