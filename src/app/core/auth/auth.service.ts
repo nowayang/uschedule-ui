@@ -22,7 +22,15 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 
-  signIn(credentials: { email: string, password: string }): Observable<User> {
+  set accessToken(token: string) {
+    localStorage.setItem('access_token', token);
+  }
+
+  get accessToken(): string {
+    return localStorage.getItem('access_token') ?? '';
+  }
+
+  signIn(): Observable<User> {
 
     if (this.loggedIn.getValue()) {
       this.errorService.showError("User is already logged in.");
