@@ -3,6 +3,6 @@
      mat-list-item
      [routerLink]="['day', day.id]">
 
-    <span matLine>{{ day.date | date }}</span>
+    <span matLine>{{ day.date | date : 'longDate' }}</span>
   </a>
 </mat-nav-list>

@@ -2,7 +2,7 @@
   <mat-card appearance="outlined"
             class="day-card">
     <mat-card-header>
-      <mat-card-title>Dzień {{ (day | async)?.date | date }}</mat-card-title>
+      <mat-card-title>{{ (day | async)?.date | date : 'fullDate' }}</mat-card-title>
       <mat-card-subtitle *ngIf="(day | async)?.lessons?.length === 0">W tym dniu nie ma zajęć</mat-card-subtitle>
 
       <span class="spacer"></span>
