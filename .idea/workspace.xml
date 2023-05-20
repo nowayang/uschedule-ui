@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0c9a56d-7a54-466c-b35e-fdf1457c65d7" name="Changes" comment="Support for expandable nav menu">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/plan/day/day.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/plan/day/day.resolver.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/plan/day/day.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/plan/day/day.service.ts" afterDir="false" />
+    <list default="true" id="c0c9a56d-7a54-466c-b35e-fdf1457c65d7" name="Changes" comment="Default load upcoming day">
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +86,7 @@
       <workItem from="1683458010941" duration="7175000" />
       <workItem from="1684346339557" duration="1248000" />
       <workItem from="1684388796785" duration="29000" />
-      <workItem from="1684570736151" duration="8035000" />
+      <workItem from="1684570736151" duration="8358000" />
     </task>
     <task id="LOCAL-00001" summary="App initial structure">
       <created>1682408117859</created>
@@ -230,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684577689433</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Default load upcoming day">
+      <created>1684580157365</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1684580157365</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +271,8 @@
     <MESSAGE value="Oauth2 auth token" />
     <MESSAGE value="Load/patch plan settings" />
     <MESSAGE value="Support for expandable nav menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Support for expandable nav menu" />
+    <MESSAGE value="Default load upcoming day" />
+    <option name="LAST_COMMIT_MESSAGE" value="Default load upcoming day" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
