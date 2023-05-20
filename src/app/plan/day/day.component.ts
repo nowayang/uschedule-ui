@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ReplaySubject, skip, Subject, switchMap, take, takeUntil} from "rxjs";
+import {filter, ReplaySubject, skip, Subject, switchMap, take, takeUntil} from "rxjs";
 import {Day} from "../plan.types";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LogService} from "../../core/log.service";
@@ -40,6 +40,7 @@ export class DayComponent implements OnInit {
         skip(1),
         takeUntil(this.unsubscribeAll),
         switchMap(settings => this.day.pipe(take(1))),
+        filter(day => !!day),
         switchMap(day => this.dayService.getDay(day.id)))
       .subscribe(day => {
         this.day.next(day);

@@ -5,7 +5,7 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span>Plan zajęć Politechniki Krakowskiej</span>
-    <span *ngIf="!!plan">, ostatnia data pobrania planu - {{ plan?.fileModifiedAt | date : 'MMM d, y, HH:mm' }}</span>
+    <span *ngIf="!!plan?.fileModifiedAt else noPlan">, ostatnia data pobrania planu - {{ plan?.fileModifiedAt | date : 'MMM d, y, HH:mm' }}</span>
     <span class="spacer"></span>
     <button mat-icon-button disabled>
       <mat-icon>share</mat-icon>
@@ -48,6 +48,8 @@
     <router-outlet></router-outlet>
   </mat-drawer-container>
 </ng-container>
+
+<ng-template #noPlan>, brak dostępnego planu</ng-template>
 
 
 

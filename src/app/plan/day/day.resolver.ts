@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot} from '@angular/router';
-import {map, Observable, of, switchMap} from 'rxjs';
+import {catchError, map, Observable, of, switchMap} from 'rxjs';
 import {DayService} from './day.service';
-import {Day, Lesson} from "../plan.types";
+import {Day} from "../plan.types";
 import {LogService} from "../../core/log.service";
 
 @Injectable({
@@ -17,10 +17,12 @@ export class DayResolver implements Resolve<Observable<Day | null>> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Day | null> {
     if (!route.paramMap.has('id')) {
-      return this.dayService.getUpcomingDayId(new Date())
+      return this.dayService.getUpcomingDay(new Date())
         .pipe(
+          map(day => day.id),
           map(id => Number(id)),
-          switchMap(id => this.dayService.getDay(id))
+          switchMap(id => this.dayService.getDay(id)),
+          catchError(err => of(null))
         );
     }
 

@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, filter, Observable, of, switchMap, tap} from "rxjs";
-import {Plan, Settings} from "../plan.types";
+import {BehaviorSubject, Observable, tap} from "rxjs";
+import {Settings} from "../plan.types";
 import {HttpClient} from "@angular/common/http";
-import {AuthService} from "../../core/auth/auth.service";
 import {LogService} from "../../core/log.service";
 
 @Injectable({

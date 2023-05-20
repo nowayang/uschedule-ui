@@ -25,7 +25,8 @@ export class PlanComponent implements OnInit {
       .subscribe(resolvedData => {
 
         this.plan = resolvedData['plan'];
-        this.logService.log(resolvedData);
+      }, error => {
+        this.logService.log(error);
       });
   }
 
