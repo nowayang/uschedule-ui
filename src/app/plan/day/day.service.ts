@@ -1,7 +1,19 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {catchError, filter, map, Observable, of, ReplaySubject, take, takeUntil, tap, throwError} from 'rxjs';
-import {Day, DaySelection, Lesson} from '../plan.types';
+import {
+  catchError,
+  filter,
+  first,
+  map,
+  Observable,
+  of,
+  ReplaySubject,
+  startWith,
+  switchMap,
+  tap,
+  throwError
+} from 'rxjs';
+import {Day, DaySelection} from '../plan.types';
 import {Page} from "../../shared/shared.types";
 import {PlanService} from "../plan.service";
 import {PlanSettingsService} from "../plan-settings/plan-settings.service";
@@ -20,6 +32,7 @@ export class DayService {
               private logService: LogService) {}
 
   getDay(id: Number): Observable<Day> {
+    this.logService.log('getDay(' + id + ')');
     const settings = this.planSettingsService.settings.value;
     const url = `/api/days/${id}/degree/${settings.degree}/level/${settings.level}/group/${settings.groupIndex}`
     return this.httpClient.get<Day>(url).pipe(
@@ -43,8 +56,7 @@ export class DayService {
         catchError(error => throwError(error)),
         map(res => res as Page<DaySelection>),
         map(res => res.content as DaySelection[]),
-        tap(dayList => this.dayList.next(dayList)),
-        tap(dayList => this.logService.log("day list updated"))
+        tap(dayList => this.dayList.next(dayList))
       );
   }
 
@@ -68,5 +80,16 @@ export class DayService {
       filter(prevDay => !!prevDay),
       map(prevDay => prevDay.id)
     );
+  }
+
+  getUpcomingDayId(date: Date = new Date()): Observable<number> {
+    return this.loadDayList().pipe(
+      map(list => {
+        const upcomingDays = list.filter(day => new Date(day.date).getTime() > date.getTime());
+        console.log(upcomingDays);
+        return !!upcomingDays && upcomingDays.length > 0 ? upcomingDays[0] : list[0];
+      }),
+      map(day => day.id)
+    )
   }
 }
