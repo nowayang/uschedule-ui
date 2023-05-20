@@ -20,13 +20,29 @@
                 [opened]="true"
                 class="nav-drawer">
 
-      <span class="mat-h1">Ustawienia</span>
-      <mat-divider></mat-divider>
-      <app-plan-settings></app-plan-settings>
+      <mat-accordion multi [displayMode]="'flat'">
+        <mat-expansion-panel class="mat-elevation-z0">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Ustawienia
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <app-plan-settings></app-plan-settings>
+        </mat-expansion-panel>
 
-      <span class="mat-h1">Zjazdy studenckie</span>
-      <mat-divider></mat-divider>
-      <app-day-nav></app-day-nav>
+        <mat-expansion-panel class="mat-elevation-z0"
+                             [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Zjazdy studenckie
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <app-day-nav></app-day-nav>
+        </mat-expansion-panel>
+      </mat-accordion>
+
     </mat-drawer>
 
     <router-outlet></router-outlet>
