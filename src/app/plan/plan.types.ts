@@ -24,7 +24,8 @@ export type Lesson = {
 }
 
 export type Settings = {
+  enableNotification: boolean,
   degree: number,
-  year: number,
-  group: number
+  level: number,
+  groupIndex: number
 }

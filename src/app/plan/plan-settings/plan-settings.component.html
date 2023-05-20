@@ -1,5 +1,5 @@
 <form *ngIf="formGroup" [formGroup]="formGroup">
-  <mat-list>
+  <mat-list class="settings-list">
 
     <mat-list-item style="height:auto">
       <mat-form-field appearance="fill">
@@ -13,7 +13,7 @@
 
     <mat-list-item style="height:auto">
       <mat-form-field appearance="fill">
-        <mat-select formControlName="year">
+        <mat-select formControlName="level">
           <mat-option [value]="1">1</mat-option>
           <mat-option [value]="2">2</mat-option>
           <mat-option [value]="3">3</mat-option>
@@ -25,7 +25,7 @@
 
     <mat-list-item style="height:auto">
       <mat-form-field appearance="fill">
-        <mat-select formControlName="group">
+        <mat-select formControlName="groupIndex">
           <mat-option [value]="1">1</mat-option>
           <mat-option [value]="2">2</mat-option>
           <mat-option [value]="3">3</mat-option>
@@ -35,6 +35,13 @@
         </mat-select>
         <mat-label>Grupa laboratoryjna</mat-label>
       </mat-form-field>
+    </mat-list-item>
+
+    <mat-list-item style="height:auto">
+      <mat-slide-toggle formControlName="enableNotification"
+                        color="primary">
+        Powiadomienia
+      </mat-slide-toggle>
     </mat-list-item>
   </mat-list>
 </form>

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, map, Observable, tap} from "rxjs";
+import {BehaviorSubject, catchError, map, Observable, of, tap} from "rxjs";
 import {Plan} from "./plan.types";
 
 @Injectable({
@@ -18,7 +18,12 @@ export class PlanService {
   }
 
   loadLatestPlan(): Observable<Plan> {
-    return this.httpClient.get<Plan>("/api/schedules/latest")
-      .pipe(tap(plan => this.plan.next(plan)))
+    return this.httpClient.get<Plan>("/api/schedules/latest").pipe(
+      tap(plan => this.plan.next(plan)),
+      catchError(err => {
+        this.plan.next(undefined);
+        return this.plan$;
+      })
+    )
   }
 }

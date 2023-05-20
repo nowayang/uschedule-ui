@@ -21,7 +21,7 @@ export class DayService {
 
   getDay(id: Number): Observable<Day> {
     const settings = this.planSettingsService.settings.value;
-    const url = `/api/days/${id}/degree/${settings.degree}/level/${settings.year}/group/${settings.group}`
+    const url = `/api/days/${id}/degree/${settings.degree}/level/${settings.level}/group/${settings.groupIndex}`
     return this.httpClient.get<Day>(url).pipe(
       catchError(error => throwError(error)),
       map(res => res as Day),
@@ -36,7 +36,7 @@ export class DayService {
         {
           scheduleId: this.planService.plan.value?.id,
           degree: this.planSettingsService.settings.value?.degree,
-          level: this.planSettingsService.settings.value?.year,
+          level: this.planSettingsService.settings.value?.level,
         },
         {params: {size: 1000, sort: 'date'}})
       .pipe(

@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PlanSettingsService} from "./plan-settings.service";
-import {Form, FormBuilder, FormGroup} from "@angular/forms";
-import {filter, map, Subject, takeUntil} from "rxjs";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {first, Subject, switchMap, takeUntil} from "rxjs";
 import {Settings} from "../plan.types";
 import {LogService} from "../../core/log.service";
 
@@ -21,11 +21,11 @@ export class PlanSettingsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.formGroup = this.buildForm()
-    this.formGroup.valueChanges
-      .pipe(takeUntil(this.unsubscribeAll))
-      .subscribe((value: Settings) => {
-        this.planSettingsService.settings.next(value)
-      });
+    this.planSettingsService.loadSettings().pipe(first()).subscribe((settings: Settings) => {
+      this.logService.log("Settings loaded");
+      this.onSettingsChanged(settings, { emitEvent: true });
+      this.subscribeFormValueChanges();
+    });
   }
 
   ngOnDestroy(): void {
@@ -33,11 +33,29 @@ export class PlanSettingsComponent implements OnInit, OnDestroy {
     this.unsubscribeAll.complete();
   }
 
+  private subscribeFormValueChanges() {
+    this.formGroup.valueChanges
+      .pipe(
+        takeUntil(this.unsubscribeAll),
+        switchMap((value: Settings) => this.planSettingsService.patchSettings(value))
+      )
+      .subscribe((settings: Settings) => {
+        this.logService.log("Settings updated");
+        this.onSettingsChanged(settings);
+      });
+  }
+
+  private onSettingsChanged(settings: Settings, patchOptions: any = { emitEvent: false }) {
+    const formGroup = this.formGroup as FormGroup;
+    formGroup.patchValue(settings, patchOptions);
+  }
+
   private buildForm(): FormGroup {
     return this.formBuilder.group({
       degree: [1],
-      year: [1],
-      group: [1],
+      level: [1],
+      groupIndex: [1],
+      enableNotification: [false],
     });
   }
 }
